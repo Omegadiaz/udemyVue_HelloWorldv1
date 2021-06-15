@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue!</title>
+    <!-- CDN vue 3 -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <h1>Hello Vue 3!</h1>
+        <h2>Tipo de cuenta: {{cuenta}}</h2>
+        <h2>Saldo disponible: <span :class="[cantidad > 500 ? 'bg-dark text-success' : 'bg-dark text-danger']">{{ cantidad > 1 ? cantidad : 'Sin saldo' }}</span></h2>
+        <button @click="agregarSaldo">Agregar saldo</button>
+        <button @click="restarSaldo" :disabled="desactivado">Restar saldo</button>
+        <ul>
+            <li v-for="(item,index) in servicios" :key="index">{{item}}</li>
+        </ul>
+        <footer-banco :cantidad="cantidad" />
+    </div>
+    
+
+    <script src="main.js"></script>
+    <script src="components/Footer.js"></script>
+<script>
+    app.mount('#app');
+</script>
+</body>
+</html>
